@@ -17,7 +17,6 @@
     "CALICO_CALICOCTL_URL": "{{resource.assets.uris.calicoctl}}",
     "CALICO_NODE_IMG": "{{resource.assets.container.docker.calico-node}}",
     "CALICO_LIBNETWORK_IMG": "{{resource.assets.container.docker.calico-libnetwork}}",
-    {{#calico.allow-agent-update}}"CALICO_ALLOW_AGENT_UPDATE": "true",{{/calico.allow-agent-update}}
     {{#calico.allow-docker-update}}"CALICO_ALLOW_DOCKER_UPDATE": "true",{{/calico.allow-docker-update}}
     "CALICO_MAX_CONCURRENT_RESTARTS": "{{calico.max-concurrent-restarts}}",
     "CALICO_ZK": "{{calico.zk}}",
@@ -31,11 +30,12 @@
     "CALICO_MEM_LIMIT_LIBNETWORK": "{{calico.mem-limit-libnetwork}}",
     "CALICO_STATUS_DNS": "{{calico.status-dns}}",
     "CALICO_INSTALLER_URL": "{{resource.assets.uris.calico-installer}}",
-    "CALICO_MESOS_PLUGIN": "{{resource.assets.uris.calico-mesos-plugin}}",
     "ETCD_SRV": "{{etcd.etcd-discovery-url}}",
     "ETCD_BINARY_URL": "{{resource.assets.uris.etcd}}",
-    "NETMODULES_URL": "{{resource.assets.uris.netmodules-libraries}}",
-    "MESOS_MASTER": "{{mesos.master}}"
+    "MESOS_MASTER": "{{mesos.master}}",
+    "MESOS_CNI_PLUGINS_DIR": "{{mesos.cni-plugins-dir}}",
+    "MESOS_CNI_CONFIG_DIR": "{{mesos.cni-config-dir}}",
+    "CALICO_CNI_BINARY_URL": "{{resource.assets.uris.calico-cni}}"
   },
   "labels": {
     "DCOS_PACKAGE_FRAMEWORK_NAME": "{{calico.framework-name}}"

@@ -8,11 +8,6 @@
           "description": "The name of the framework.",
           "default": "calico"
         },
-        "allow-agent-update": {
-          "type": "boolean",
-          "description": "Whether the Calico framework is allowed to reconfigure and restart the Mesos Agent to install netmodules with a Calico plugin.  Note that during restart, the agent will not be available, and tasks running on the agent will be lost.",
-          "default": true
-        },
         "allow-docker-update": {
           "type": "boolean",
           "description": "Whether the Calico framework is allowed to reconfigure and restart Docker on the Mesos Agent to install Docker with multi-host networking.  Note that during restart, the agent will not be available, and tasks running on the agent will be lost.",
@@ -96,7 +91,6 @@
       },
       "required": [
         "framework-name",
-        "allow-agent-update",
         "allow-docker-update",
         "max-concurrent-restarts",
         "zk",
@@ -135,10 +129,22 @@
           "default": "zk://master.mesos:2181/mesos",
           "description": "The URL of the Mesos master. The format is a comma-delimited list of hosts like zk://host1:port,host2:port/mesos. If using ZooKeeper, pay particular attention to the leading zk:// and trailing /mesos! If not using ZooKeeper, standard host:port patterns, like localhost:5050 or 10.0.0.5:5050,10.0.0.6:5050, are also acceptable.",
           "type": "string"
+        },
+        "cni-plugins-dir": {
+          "default": "/opt/mesos/cni/bin/",
+          "description": "Location of CNI plugins on the Agent.",
+          "type": "string"
+        },
+        "cni-config-dir": {
+          "default": "/opt/mesos/cni/conf/",
+          "description": "Location of CNI configs.",
+          "type": "string"
         }
       },
       "required": [
-        "master"
+        "master",
+        "cni-plugins-dir",
+        "cni-config-dir"
       ],
       "type": "object"
     }
